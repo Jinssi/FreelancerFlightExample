@@ -7,13 +7,13 @@ trigger:
 - master
 
 steps:
- - task: AzureFileCopy@3
-   inputs:
-   azureSubscription: 'Microsoft Azure Internal Consumption(b58a7c61-2dff-49df-b9ab-d0e345697dce)'
-   Destination: 'AzureVMs'
-   storage: 'aaponfilestorage'
-   resourceGroup: 'DEFAULTRESOURCEGROUP-WEU'
-   vmsAdminUserName: 'aapo'
-   vmsAdminPassword: 'Q100w200e300'
-   TargetPath: 'c:\Testikansio'
-   CleanTargetBeforeCopy: true
+- task: AzureFileCopy@3
+  inputs:
+    SourcePath: '$(Build.Repository.LocalPath)'
+    azureSubscription: 'Microsoft Azure Internal Consumption(b58a7c61-2dff-49df-b9ab-d0e345697dce)'
+    Destination: 'AzureVMs'
+    storage: 'aaponfilestorage'
+    resourceGroup: 'DEFAULTRESOURCEGROUP-WEU'
+    vmsAdminUserName: 'aapo'
+    vmsAdminPassword: 'Q100w200e300'
+    TargetPath: 'c:\Testikansio'
