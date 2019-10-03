@@ -6,14 +6,14 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'ubuntu-latest'
-
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+ - task: AzureFileCopy@3
+   inputs:
+   azureSubscription: 'Microsoft Azure Internal Consumption(b58a7c61-2dff-49df-b9ab-d0e345697dce)'
+   Destination: 'AzureVMs'
+   storage: 'aaponfilestorage'
+   resourceGroup: 'DEFAULTRESOURCEGROUP-WEU'
+   vmsAdminUserName: 'aapo'
+   vmsAdminPassword: 'Q100w200e300'
+   TargetPath: 'c:\Testikansio'
+   CleanTargetBeforeCopy: true
