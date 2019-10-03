@@ -1,0 +1,19 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'win2016'
+
+steps:
+- task: AzureFileCopy@3
+  inputs:
+    SourcePath: '$(Build.Repository.LocalPath)'
+    azureSubscription: 'Microsoft Azure Internal Consumption(b58a7c61-2dff-49df-b9ab-d0e345697dce)'
+    Destination: 'AzureBlob'
+    storage: 'aaponfilestorage'
+    ContainerName: 'filecopytesti'
